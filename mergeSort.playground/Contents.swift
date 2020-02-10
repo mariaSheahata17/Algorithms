@@ -1,4 +1,4 @@
-
+import Dispatch
 func mergeSort(array : [Int]) -> [Int]{
     if array.count <= 1 {return array}
     let mid: Int = array.count/2
@@ -7,9 +7,6 @@ func mergeSort(array : [Int]) -> [Int]{
     var leftHalf: [Int] = mergeSort(array: Array(ar1))
     var righttHalf: [Int] = mergeSort(array: Array(ar2))
     return merge(a1 : leftHalf , a2: righttHalf , a : array)
-     
-    
-    
 }
 
 
@@ -41,21 +38,28 @@ func merge(a1 : [Int], a2 : [ Int], a : [Int]) -> [Int]{
 
 // call mergesort on n numbers
 var n = 1
-
-for _ in 0..<1 {
+for _ in 0..<10 {
     
-    n = n * 10
+    n = n * 20
     print("Its sorting \(n) numbers")
-   // var num_list = [Int]()
     var num_list : [Int] = []
     for _ in 0..<n {
         num_list.append(Int.random(in: 0..<n))
     }
-    
+    let start = DispatchTime.now() // <<<<<<<<<< Start time
     var sortedArray = mergeSort(array : num_list)
-    
+    let end = DispatchTime.now()   // <<<<<<<<<<   end time
+    let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds // <<<<< Difference in nano seconds
+    let timeInterval = Double(nanoTime) / 1_000_000_000
+    /* if you want to print the sorted array
     for num in sortedArray {
-        print("\(num)  ")
+        print("\(num)  ", terminator:"")
     }
+   */
+    
+    print(" ")
+    print("Time  \(timeInterval) seconds")
+    print(" ")
+    
     
 }
