@@ -1,15 +1,16 @@
 import Foundation
 
-class KruckalMST{
+public class KruckalMST{
     
     var MST = PriorityQueue<Edge>(sort: <)
     
-    init(graph : EdgeWeightedGraph){
+  public  init(graph : EdgeWeightedGraph){
         // insert graph edges in the priority queue
         var priorityQueue = PriorityQueue<Edge>(sort: <)
         for edge in graph.graphEdges(){
             priorityQueue.enqueue(edge)
         }
+    print("KMST riorityQueue size = \(priorityQueue.count)")
         
         // create Union Find
         var uf = QuickFindUF(arraySize :graph.verticesNum)
@@ -21,11 +22,13 @@ class KruckalMST{
             if !uf.connected(num1: v1, num2: v2){
                 uf.union(num1: v1, num2: v2)
                 MST.enqueue(edge!)
+                print("MST enueue edge : \(edge!)")
             }
         }
+    print("MST size = \(MST.count)")
     }
     
-    func mst() -> PriorityQueue<Edge> {
+    public func mst() -> PriorityQueue<Edge> {
         return MST
     }
     

@@ -17,13 +17,13 @@ import Foundation
 */
 
 
-struct Edge{
+public struct Edge{
     
     var vertex1 : Int
     var vertex2 : Int
     var weight :Int
     
-    init(vertex1 : Int, vertex2 : Int, weight :Int ){
+    public init(vertex1 : Int, vertex2 : Int, weight :Int ){
         self.vertex1 = vertex1
         self.vertex2 = vertex2
         self.weight = weight
@@ -42,7 +42,7 @@ struct Edge{
 
 extension Edge :Comparable {
     
-    static func <( edge1 : Edge , edge2 : Edge) -> Bool{
+   public static func <( edge1 : Edge , edge2 : Edge) -> Bool{
         return edge1.weight < edge2.weight
     }
     

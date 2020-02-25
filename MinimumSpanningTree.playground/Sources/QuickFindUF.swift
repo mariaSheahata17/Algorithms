@@ -5,15 +5,16 @@ class QuickFindUF{
     
     var ID :  [Int] = [Int]()
     
-    init(arraySize : Int){
-        for i in 0..<arraySize { self.ID[i] = i}
+    public init(arraySize : Int){
+        for i in 0...arraySize { self.ID.append(i)}
     }
     
-    func connected(num1 : Int , num2 : Int) -> Bool{
+    public func connected(num1 : Int , num2 : Int) -> Bool{
         return ID[num1] == ID[num2]
     }
     
-    func union(num1 : Int , num2 : Int){
+    public func union(num1 : Int , num2 : Int){
+        print("Union \(num1) , \(num2)")
         var num1ID = ID[num1]
         var num2ID = ID[num2]
         

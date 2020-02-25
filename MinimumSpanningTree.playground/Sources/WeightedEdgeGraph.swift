@@ -8,37 +8,45 @@
 
 import Foundation
 
-class EdgeWeightedGraph{
+public class EdgeWeightedGraph{
     
     var verticesNum : Int
     var edgesList = [[Edge]]()
     var verticesList : [Int] = [Int]()
     var edges : [Edge] = [Edge]()
     
-    init(verticesNum : Int){
+   public init(verticesNum : Int){
         self.verticesNum = verticesNum
-        for i in 0..<self.verticesNum {
-            verticesList[i] = i
+        //print("verticesNum = \(verticesNum)")
+    for i in 0...self.verticesNum {
+            //print("i = \(i)")
+            verticesList.append(i)
+            var row = [Edge]()
+            self.edgesList.append(row)
         }
+    //print("edgesList.count = \(edgesList.count)")
+    
     }
     
-    func addEdge( edge : Edge){
+   // add edge
+   public func addEdge( edge : Edge){
         let v1 = edge.either()
         let v2 = edge.other(vertex : v1)
         edgesList[v1].append(edge)
         edgesList[v2].append(edge)
         edges.append(edge)
+
     }
     
-    func adjacentEdges(vertix : Int) -> [Edge]{
+   public func adjacentEdges(vertix : Int) -> [Edge]{
         return edgesList[vertix]
     }
     
-    func graphVertices() -> [Int]{
+  public  func graphVertices() -> [Int]{
         return self.verticesList
     }
     
-    func graphEdges() -> [Edge]{
+   public func graphEdges() -> [Edge]{
         return self.edges
     }
 
